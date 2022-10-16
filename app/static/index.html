@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>Album example · Bootstrap v5.0</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--    <link rel="stylesheet" href="css.css">-->
+
+    <!-- Bootstrap core CSS -->
+<link href="bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+.warning {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #ff0000;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: inherit;
+    min-height: 30px;
+}
+
+.row{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.App-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+.App-container, .cont, .sect_m {
+    max-width: 800px;
+}
+
+.Keyboard-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+}
+
+.key {
+    align-items: center;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: #dce1ed;
+    color: #5a6376;
+    color: inherit;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    flex: 1 1;
+    font-size: 20px;
+    font-weight: 700;
+    justify-content: center;
+    margin: 3px;
+    min-height: 46px;
+    padding: 3px;
+    text-decoration: inherit;
+    text-transform: capitalize;
+    transition: .2s;
+}
+@media (hover: hover) and (pointer: fine) {
+    .key:hover {
+        background-color: #abb0bc;
+    }
+}
+
+.key_color_active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.above_letter {
+    vertical-align: middle;
+    text-align: center;
+    display:inline-block;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.letter-mini {
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    word-wrap: break-word;
+    line-height: 21px;
+    text-align: center;
+    color: #5a6376;
+    color: inherit;
+    font-size: 26px;
+    font-weight: 700;
+    text-decoration: inherit;
+    text-transform: lowercase;
+    display: inline-block;
+    border: 1px solid transparent;
+    border-color: #0d6efd;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+@media (hover: hover) and (pointer: fine) {
+    .letter-mini:hover {
+        background-color: #0d6efd;
+    }
+}
+
+.letter {
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    color: white;
+    background-color: #00ff00;
+    text-align: center;
+    font-size: 45px;
+    font-weight: 700;
+    text-decoration: inherit;
+    text-transform: uppercase;
+    display:inline-block;
+    border: 1px solid transparent;
+    border-color: #0d6efd;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+@media (hover: hover) and (pointer: fine) {
+    .letter:hover {
+        background-color: #0d6efd;
+    }
+}
+
+.letter_active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+
+.check {
+    font-size: 30px;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    z-index: 99;
+    font-size: 22px;
+    border: none;
+    outline: none;
+    background-color: #0d6efd;
+    color: white;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 20px;
+}
+#myBtn:hover {
+    background-color: #555;
+}
+
+    </style>
+
+
+
+  </head>
+  <body>
+    
+<header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">О программе</h4>
+          <p class="text-muted">Программа создана специально для помощи в известной игре "5 букв".
+            С мая 2022 года на сайте Тинькофф можно получить бонусы за угадывание слов в этой игре
+            <a href="https://5bukv.tinkoff.ru/" class="text-white">5bukv.tinkoff.ru</a> Также в игру можно поиграть
+            <a href="https://wordlegame.org/ru/5-letter-words-wordle" class="text-white">тут</a>. Тамже можно
+          ознакомиться с правилами игры.
+          <br><br>В отличие от большинства сервисов для подбора слов и помощников кроссвордистов
+          в этой программе есть возможность использовать фильтры специально подобранные под правила игры, а также
+            некоторые дополнительные возможности, облегчающие поиск слова.
+          <br><br></p>
+          <h4 class="text-white">Как пользоваться программой</h4>
+          <p class="text-muted">Есть несколько фильтров, которые позволяют отбрасывать слова, не подходящие по критериям.
+            В основном, используется фильтр "Черный список" и фильтры по позициям букв (5 клеточек снизу).
+            В "Черном списке" нужно указать буквы, которые отсутствуют в слове. А в позиционных клеточках буквы,
+            которые есть в слове, но не в этой позиции (не отмеченные флажком под буквой) и те, которые стоят на своем
+            месте (отмеченные флажком под буквой и имеющие зеленый фон).
+          <br><br>При выводе слова группируются по частотности букв, используемых в 5-буквенных словах, поэтому слова
+            находящиеся вверху страницы имеют набор букв имеющий больше шансов встретиться в искомом слове. Кроме того,
+            нужно стараться использовать наиболее употребляемые слова, они чаще оказываются загадвнными (хотя набор слов
+              зависит от автора конкретной игры).
+            <br><br>Если программа возвращает много слов, можно воспользоваться переключателем "Запрет дублей", в этом
+              случае будут предлагаться слова, не имеющие одинаковых букв, что позволяет проверить большее количество
+              букв за одну попытку. Не забывайте выключить этот фильтр на заключительных этапах, иначе нужного слова
+              может не оказаться в конечном списке.
+              <br><br>Благодарю за интерес, проявленный к этой программе. Присылайте свои отзывы, пожелания и
+              недостающие слова по электронной почте или в Телеграмм. Удачной игры.</p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Контакты</h4>
+          <ul class="list-unstyled">
+            <li><a href="mailto: avdivo@mail.ru" class="text-white">Email: avdivo@mail.ru</a></li>
+              <li><a href="https://t.me/avdivos/" class="text-white" target="blank">Telegram: @avdivos</a></li>
+            <li><a href="https://github.com/avdivo/word_choice" class="text-white">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;
+        <strong>Подбор слова из 5 букв</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Кнопки выбора фильтра -->
+<div class="container">
+  <div class="row">
+    <div class="warning" id="warning"></div>
+    <div class="btn-group" role="group" aria-label="Basic outlined example">
+      <button type="button" class="btn btn-outline-primary" id="black_list">Черный список</button>
+      <button type="button" class="btn btn-outline-primary" id="white_list">Белый список</button>
+      <button type="button" class="btn btn-outline-primary" id="double_letter">Выбор дублей</button>
+      <button type="button" class="btn btn-outline-primary" id="ban">Запрет дублей</button>
+      <button type="button" class="btn btn-outline-primary" id="refresh">Сброс</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Клавиатура -->
+<div class="App-container">
+
+  <div class="Keyboard-row">
+    <div class="col">
+      <div class='key key_color' id='key1'>Й</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key2'>Ц</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key3'>У</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key4'>К</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key5'>Е</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key6'>Н</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key7'>Г</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key8'>Ш</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key9'>Щ</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key10'>З</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key11'>Х</div>
+    </div>
+  </div>
+
+  <div class="Keyboard-row">
+    <div class="col">
+      <div class='key key_color' id='key12'>Ф</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key13'>Ы</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key14'>В</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key15'>А</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key16'>П</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key17'>Р</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key18'>О</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key19'>Л</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key20'>Д</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key21'>Ж</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key22'>Э</div>
+    </div>
+  </div>
+
+  <div class="Keyboard-row">
+    <div class="col">
+      <div class='key key_color' id='key23'>Ъ</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key24'>Я</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key25'>Ч</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key26'>С</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key27'>М</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key28'>И</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key29'>Т</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key30'>Ь</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key31'>Б</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key32'>Ю</div>
+    </div>
+    <div class="col">
+      <div class='key key_color' id='key33'><i class="fa fa-refresh" aria-hidden="true"></i></div>
+    </div>
+  </div>
+
+</div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-auto">
+            <div class='above_letter'>
+              <div class='letter-mini' id='l1'></div>
+              <div class="check">
+                <input class="form-check-input" type="checkbox" id="ch1">
+              </div>
+            </div>
+            <div class='above_letter'>
+              <div class='letter-mini' id='l2'></div>
+              <div class="check">
+                <input class="form-check-input" type="checkbox" id="ch2">
+              </div>
+            </div>
+            <div class='above_letter'>
+              <div class='letter-mini' id='l3'></div>
+              <div class="check">
+                <input class="form-check-input" type="checkbox" id="ch3">
+              </div>
+            </div>
+            <div class='above_letter'>
+              <div class='letter-mini' id='l4'></div>
+              <div class="check">
+                <input class="form-check-input" type="checkbox" id="ch4">
+              </div>
+            </div>
+            <div class='above_letter'>
+              <div class='letter-mini' id='l5'></div>
+              <div class="check">
+                <input class="form-check-input" type="checkbox" id="ch5">
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+          <button type="button" class="btn btn-primary" id="submit">Подобрать слова</button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+          <div class="col"><div class='text-justify' id="out"></div></div>
+      </div>
+    </div>
+
+<button onclick="topFunction()" id="myBtn" title="К фильтрам"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></button>
+
+<footer class="text-muted py-5"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+
+</footer>
+
+<script src="jquery-3.6.1.min.js"></script>
+<script src="main.js"></script>
+<script src="bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>
