@@ -1,5 +1,5 @@
 # pull the official docker image
-FROM python:3.8.10
+FROM python:3.8.10-slim-buster
 
 # set work directory
 WORKDIR /app

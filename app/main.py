@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-app.mount("/5letters", StaticFiles(directory="static", html=True))
+app.mount("/5letters/", StaticFiles(directory="static", html=True))
 
 @app.post("/api/", response_model=dict())
 def index(filter: Filter):
