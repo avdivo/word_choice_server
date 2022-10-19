@@ -33,7 +33,7 @@ def word_choice(filter):
     alphabet = 'аокеритлнсупмбвдзгяышьцчхйфжюэщъё-'
 
     # Для запуска вне докера  сети с контейнером redis использовать подключение Localhost
-    r = redis.Redis(host='Localhost', port=6379, db=0)  # Подключаемся к Redis
+    r = redis.Redis(host='redis', port=6379, db=0)  # Подключаемся к Redis
 
     # Проверяем существование Redis базы данных слов по ключу 'all'
     if not r.exists("all"):
