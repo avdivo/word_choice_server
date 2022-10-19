@@ -21,8 +21,13 @@ function topFunction() {
 // ------------------------------------------------------------------------------------
 // Вывод предупреждения
 function warning(mess, color='red') {
+
     $('#warning').css('color', color); // Установка цвета для строки
     $('#warning').text(mess); // Показать сообщение
+
+    // Переход к сообщению
+    topFunction();
+
 
     // Скрываем сообщение
     setTimeout(function(){
@@ -47,13 +52,13 @@ class Ban {
     }
 
     set() {
-        // Инвертируем ban, если разрешено (нет дублей и этот фильтр не активен)
-        // Вернет результат, а именно состояние
+        // Инвертируем ban, если разрешено (нет выбранных дублей и фильтр дублей не активен)
+        // Вернет false если не переключился
             if (this.ban) {
                 this.element.css({'background-color': this.old_bg});
                 this.element.css({'color': this.old_ink});
                 this.ban = false;
-                return false
+                return true
             } else {
                 let dl = Lists.getFilter('double_letter')
                 if (dl.isActive() || dl.getList().length > 0) {
@@ -406,8 +411,9 @@ $(document).ready(function(){
 
     // Запрет дублей
     $('#ban').click(function(){
-        ban.set();
-        get_words();
+        if (ban.set()) {
+            get_words();  // Обновить список слов, если фильтр переключился
+        }
     });
 
     // Нажатие клавиш на клавиатуре

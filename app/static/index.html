@@ -7,185 +7,25 @@
     <meta name="author" content="Avdivo 18.10.2022">
     <title>Подбор слова из 5 букв</title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<!--    <link rel="stylesheet" href="css.css">-->
+    <link rel="stylesheet" href="css.css">
 
     <!-- Bootstrap core CSS -->
 <link href="bootstrap.min.css" rel="stylesheet">
 
-    <style>
+<style>
+  .row{
+      margin-top: 20px;
+      margin-bottom: 20px;
+  }
 
-.warning {
-    margin-bottom: 20px;
-    text-align: center;
-    color: #ff0000;
-    font-size: 20px;
-    font-weight: 700;
-    text-decoration: inherit;
-    min-height: 30px;
-}
-
-.row{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.App-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    width: 100%;
-    position: relative;
-}
-.App-container, .cont, .sect_m {
-    max-width: 800px;
-}
-
-.Keyboard-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: stretch;
-}
-
-.key {
-    align-items: center;
-    border: 2px solid transparent;
-    border-radius: 4px;
-    background-color: #dce1ed;
-    color: #5a6376;
-    color: inherit;
-    cursor: pointer;
-    user-select: none;
-    display: flex;
-    flex: 1 1;
-    font-size: 20px;
-    font-weight: 700;
-    justify-content: center;
-    margin: 3px;
-    min-height: 46px;
-    padding: 3px;
-    text-decoration: inherit;
-    text-transform: capitalize;
-    transition: .2s;
-}
-@media (hover: hover) and (pointer: fine) {
-    .key:hover {
-        background-color: #abb0bc;
-    }
-}
-
-.key_color_active {
-    background-color: #0d6efd;
-    color: white;
-}
-
-.above_letter {
-    vertical-align: middle;
-    text-align: center;
-    display:inline-block;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.letter-mini {
-    vertical-align: middle;
-    width: 70px;
-    height: 70px;
-    word-wrap: break-word;
-    line-height: 21px;
-    text-align: center;
-    color: #5a6376;
-    color: inherit;
-    font-size: 26px;
-    font-weight: 700;
-    text-decoration: inherit;
-    text-transform: lowercase;
-    display: inline-block;
-    border: 1px solid transparent;
-    border-color: #0d6efd;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-}
-@media (hover: hover) and (pointer: fine) {
-    .letter-mini:hover {
-        background-color: #0d6efd;
-    }
-}
-
-.letter {
-    vertical-align: middle;
-    width: 70px;
-    height: 70px;
-    color: white;
-    background-color: #00ff00;
-    text-align: center;
-    font-size: 45px;
-    font-weight: 700;
-    text-decoration: inherit;
-    text-transform: uppercase;
-    display:inline-block;
-    border: 1px solid transparent;
-    border-color: #0d6efd;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-@media (hover: hover) and (pointer: fine) {
-    .letter:hover {
-        background-color: #0d6efd;
-    }
-}
-
-.letter_active {
-    background-color: #0d6efd;
-    color: white;
-}
-
-
-.check {
-    font-size: 30px;
-}
-
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-}
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-}
-
-#myBtn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 10px;
-    z-index: 99;
-    font-size: 22px;
-    border: none;
-    outline: none;
-    background-color: #0d6efd;
-    color: white;
-    cursor: pointer;
-    padding: 6px;
-    border-radius: 20px;
-}
-#myBtn:hover {
-    background-color: #555;
-}
-
-    </style>
+  .letter_active {
+      background-color: #0d6efd;
+      color: white;
+  }
+</style>
 
 
 
@@ -250,7 +90,7 @@
 
 <!-- Кнопки выбора фильтра -->
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="warning" id="warning"></div>
     <div class="btn-group" role="group" aria-label="Basic outlined example">
       <button type="button" class="btn btn-outline-primary" id="black_list">Черный список</button>
@@ -429,7 +269,7 @@
 
 <button onclick="topFunction()" id="myBtn" title="К фильтрам"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i></button>
 
-<footer class="text-muted py-5"><i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+<footer class="text-muted py-5">
 
 </footer>
 

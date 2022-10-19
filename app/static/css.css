@@ -8,11 +8,6 @@
     min-height: 30px;
 }
 
-.row{
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 .App-container {
     display: flex;
     flex-direction: column;
@@ -124,12 +119,6 @@
         background-color: #0d6efd;
     }
 }
-
-.letter_active {
-    background-color: #0d6efd;
-    color: white;
-}
-
 
 .check {
     font-size: 30px;
