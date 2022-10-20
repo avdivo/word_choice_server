@@ -4,9 +4,11 @@ import os
 from init.settings import WORD_LIST_FILE, LAST_UPDATE_WORD_LIST
 
 def init_redis(r):
-    if os.path.getmtime(WORD_LIST_FILE) == LAST_UPDATE_WORD_LIST:
-        return  # Если файл не обновлен, то не нужно обновлять БД Redis
-    r.flushdb()
+
+    if r.exists("all"):
+        if os.path.getmtime(WORD_LIST_FILE) == LAST_UPDATE_WORD_LIST:
+            return  # Если файл не обновлен, то не нужно обновлять БД Redis
+        r.flushdb()
 
     # LAST_UPDATE_WORD_LIST = os.path.getmtime(WORD_LIST_FILE)
 
