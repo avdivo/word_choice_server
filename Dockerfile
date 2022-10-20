@@ -7,6 +7,7 @@ WORKDIR /app
 # set env variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
+ENV REDIS_PATH redis
 
 # install dependencies
 COPY requirements.txt .

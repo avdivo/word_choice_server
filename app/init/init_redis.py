@@ -1,15 +1,17 @@
 # Создание групп слов с различными свойствами для Redis
-
 import re
-import sys, os
+import os
+from init.settings import WORD_LIST_FILE, LAST_UPDATE_WORD_LIST
 
 def init_redis(r):
-    if r.exists("all"):
-        return
+    if os.path.getmtime(WORD_LIST_FILE) == LAST_UPDATE_WORD_LIST:
+        return  # Если файл не обновлен, то не нужно обновлять БД Redis
+    r.flushdb()
+
+    # LAST_UPDATE_WORD_LIST = os.path.getmtime(WORD_LIST_FILE)
 
     # Чтение слов из файла
-    input_file = os.path.join(sys.path[0]+'/init/', 'five_letters_singular.txt')  # Файл ввода
-    with open(input_file, 'r', encoding='utf-8') as f:
+    with open(WORD_LIST_FILE, 'r', encoding='utf-8') as f:
         all_words = f.readlines()
     all_words = set(map(lambda x: x.rstrip(), all_words))  # Убираем дубликаты слов и перевод строки из них
     r.sadd('all', *all_words)  # Запись в Redis полного словаря

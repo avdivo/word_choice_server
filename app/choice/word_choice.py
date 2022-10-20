@@ -2,6 +2,7 @@ import re
 import redis
 import time
 from init.init_redis import init_redis
+from init.settings import REDIS_PATH
 
 def word_choice(filter):
     """
@@ -33,11 +34,13 @@ def word_choice(filter):
     alphabet = 'аокеритлнсупмбвдзгяышьцчхйфжюэщъё-'
 
     # Для запуска вне докера  сети с контейнером redis использовать подключение Localhost
-    r = redis.Redis(host='redis', port=6379, db=0)  # Подключаемся к Redis
+    try:
+        r = redis.Redis(host=REDIS_PATH, port=6379, db=0)  # Подключаемся к Redis
+    except:
+        raise ValueError('Нет подключения к Redi')
 
-    # Проверяем существование Redis базы данных слов по ключу 'all'
-    if not r.exists("all"):
-        init_redis(r)  # Создаем базу данных
+    # Проверяем, обновлена ли база данных, если нет - обновляем
+    init_redis(r)
 
     # ------------------------ Фильтр слов ---------------------------------
     # Отсев слов которые содержат буквы из Черного списка
@@ -131,6 +134,7 @@ def word_choice(filter):
     # Группы формируются по принципу частотности использования групп в 5-буквенных словах
     # Для этого определяем для каждого слова, какая его буква стоит ниже всех в списке частотности букв
     # По индексу этой буквы назначаем номер группы для вывода
+
     number_group = dict()
     summ = 0
     for word in all_words:
