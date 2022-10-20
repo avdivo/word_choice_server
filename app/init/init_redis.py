@@ -3,8 +3,9 @@ import re
 from init.settings import SETTINGS
 
 def init_redis(r):
-
+    print(r.exists("all"), '===========================')
     if r.exists("all"):
+        print(not SETTINGS.is_update(), '--------------------------')
         if not SETTINGS.is_update():
             return  # Если файл не обновлен, то не нужно обновлять БД Redis
         r.flushdb()  # Очистить БД
