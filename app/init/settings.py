@@ -7,5 +7,3 @@ try:
     REDIS_PATH = os.environ['REDIS_PATH']  # Путь к Redis
 except:
     REDIS_PATH = 'localhost'
-
-REDIS_PATH = 'localhost1'
