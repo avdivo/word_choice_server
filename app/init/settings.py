@@ -13,6 +13,7 @@ class SetingsInit:
             self.REDIS_PATH = 'localhost'
 
     def is_update(self):
+        print(self.LAST_UPDATE_WORD_LIST, '==', os.path.getmtime(self.WORD_LIST_FILE))
         if self.LAST_UPDATE_WORD_LIST == os.path.getmtime(self.WORD_LIST_FILE):
             return False
         self.LAST_UPDATE_WORD_LIST = os.path.getmtime(self.WORD_LIST_FILE)
