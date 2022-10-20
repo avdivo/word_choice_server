@@ -2,7 +2,7 @@ import re
 import redis
 import time
 from init.init_redis import init_redis
-from init.settings import REDIS_PATH
+from init.settings import SETTINGS
 
 def word_choice(filter):
     """
@@ -35,7 +35,7 @@ def word_choice(filter):
 
     # Для запуска вне докера  сети с контейнером redis использовать подключение Localhost
     try:
-        r = redis.Redis(host=REDIS_PATH, port=6379, db=0)  # Подключаемся к Redis
+        r = redis.Redis(host=SETTINGS.REDIS_PATH, port=6379, db=0)  # Подключаемся к Redis
     except:
         raise ValueError('Нет подключения к Redi')
 

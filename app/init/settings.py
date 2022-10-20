@@ -1,13 +1,22 @@
 '''Переменные для проекта'''
+from dataclasses import dataclass
 import sys, os
 
-def update_last():
-    LAST_UPDATE_WORD_LIST = os.path.getmtime(WORD_LIST_FILE)
 
-WORD_LIST_FILE = os.path.join(sys.path[0] +'/init/', 'five_letters_singular.txt')  # Файл со словами
-LAST_UPDATE_WORD_LIST = os.path.getmtime(WORD_LIST_FILE)  # Unix время последнего обновления файла списка слов
+class SetingsInit:
+    def __init__(self):
+        self.WORD_LIST_FILE: str = os.path.join(sys.path[0] +'/init/', 'five_letters_singular.txt')  # Файл со словами
+        self.LAST_UPDATE_WORD_LIST = os.path.getmtime(self.WORD_LIST_FILE)  # Unix время последнего обновления файла списка слов
+        try:
+            self.REDIS_PATH = os.environ['REDIS_PATH']  # Путь к Redis
+        except:
+            self.REDIS_PATH = 'localhost'
 
-try:
-    REDIS_PATH = os.environ['REDIS_PATH']  # Путь к Redis
-except:
-    REDIS_PATH = 'localhost'
+    def is_update(self):
+        print(self.LAST_UPDATE_WORD_LIST, '======', os.path.join(sys.path[0] +'/init/', 'five_letters_singular.txt'))
+        if self.LAST_UPDATE_WORD_LIST == os.path.join(sys.path[0] +'/init/', 'five_letters_singular.txt'):
+            return False
+        self.LAST_UPDATE_WORD_LIST = os.path.join(sys.path[0] + '/init/', 'five_letters_singular.txt')
+        return True
+
+SETTINGS = SetingsInit()
