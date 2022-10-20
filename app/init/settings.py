@@ -1,5 +1,9 @@
 '''Переменные для проекта'''
 import sys, os
+
+def update_last():
+    LAST_UPDATE_WORD_LIST = os.path.getmtime(WORD_LIST_FILE)
+
 WORD_LIST_FILE = os.path.join(sys.path[0] +'/init/', 'five_letters_singular.txt')  # Файл со словами
 LAST_UPDATE_WORD_LIST = os.path.getmtime(WORD_LIST_FILE)  # Unix время последнего обновления файла списка слов
 

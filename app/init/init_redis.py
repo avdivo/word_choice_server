@@ -1,16 +1,17 @@
 # Создание групп слов с различными свойствами для Redis
 import re
 import os
-from init.settings import WORD_LIST_FILE, LAST_UPDATE_WORD_LIST
+from init.settings import WORD_LIST_FILE, LAST_UPDATE_WORD_LIST, update_last
 
 def init_redis(r):
 
     if r.exists("all"):
+        print(r.exists("all"))
         if os.path.getmtime(WORD_LIST_FILE) == LAST_UPDATE_WORD_LIST:
             return  # Если файл не обновлен, то не нужно обновлять БД Redis
         r.flushdb()
 
-    # LAST_UPDATE_WORD_LIST = os.path.getmtime(WORD_LIST_FILE)
+    update_last()
 
     # Чтение слов из файла
     with open(WORD_LIST_FILE, 'r', encoding='utf-8') as f:
