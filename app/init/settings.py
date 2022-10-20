@@ -15,7 +15,7 @@ class SetingsInit:
     def is_update(self):
         if self.LAST_UPDATE_WORD_LIST == os.path.getmtime(self.WORD_LIST_FILE):
             return False
-        self.LAST_UPDATE_WORD_LIST = os.path.join(sys.path[0] + '/init/', 'five_letters_singular.txt')
+        self.LAST_UPDATE_WORD_LIST = os.path.getmtime(self.WORD_LIST_FILE)
         return True
 
 SETTINGS = SetingsInit()
