@@ -34,6 +34,7 @@ def word_choice(filter):
     alphabet = 'аокеритлнсупмбвдзгяышьцчхйфжюэщъё-'
 
     # Для запуска вне докера  сети с контейнером redis использовать подключение Localhost
+    print('REDIS_PATH -----------------', REDIS_PATH)
     try:
         r = redis.Redis(host=REDIS_PATH, port=6379, db=0)  # Подключаемся к Redis
     except:
