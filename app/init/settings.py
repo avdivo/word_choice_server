@@ -8,4 +8,4 @@ try:
 except:
     REDIS_PATH = 'localhost'
 
-REDIS_PATH = 'localhost'
+REDIS_PATH = 'localhost1'
