@@ -4,11 +4,12 @@ services:
   web:
     build: .
     command: uvicorn main:app --host 0.0.0.0
+#    command: uvicorn main:app
     volumes:
       - .:/app
     restart: always
     ports:
-      - 80:8000
+      - 3000:8000
     networks:
       - 5letters
 
