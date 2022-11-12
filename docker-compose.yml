@@ -4,26 +4,34 @@ services:
   web:
     build: .
     command: uvicorn main:app --host 0.0.0.0
-#    command: uvicorn main:app
     volumes:
       - .:/app
+    networks:
+      redis_net:
+      nginx_net:
     restart: always
     ports:
-      - 80:8000
-    networks:
-      - 5letters
-
-  redis:
-    container_name: redis
-    image: redis
-    restart: always
-    ports:
-      - 6379:6379
-    networks:
-      - redis
+      - 8000:8000
 
 networks:
-  5letters:
-    name: network
-  redis:
-    name: network
+  redis_net:
+    name: redis_net
+    external: true
+  nginx_net:
+    name: nginx_net
+    external: true
+#
+#  redis:
+#    container_name: redis
+#    image: redis
+#    restart: always
+#    ports:
+#      - 6379:6379
+#    networks:
+#      - redis
+#
+#networks:
+#  5letters:
+#    name: network
+#  redis:
+#    name: network
