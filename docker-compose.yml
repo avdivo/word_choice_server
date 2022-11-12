@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  web:
+  5letters:
     build: .
     command: uvicorn main:app --host 0.0.0.0
     volumes:
