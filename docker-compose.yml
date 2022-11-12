@@ -9,7 +9,7 @@ services:
       - .:/app
     restart: always
     ports:
-      - 8000:8000
+      - 80:8000
     networks:
       - 5letters
 
