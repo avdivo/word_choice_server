@@ -11,7 +11,7 @@ app = FastAPI()
 
 app.mount("/5letters/", StaticFiles(directory="static", html=True))
 
-@app.post("/api/", response_model=dict())
+@app.post("/5/api/", response_model=dict())
 def index(filter: Filter):
     li, t = word_choice(filter)
     return {'words': li, 'time': t}

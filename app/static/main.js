@@ -325,7 +325,7 @@ function init() {
 // -------------------------------------------------------------------------------------
 // Отправка фильтров на API. Получение слов и вывод
 function get_words(){
-        let url_api = String(location).replace('5letters', 'api');
+        let url_api = String(location).replace('5letters', '5/api');
         let filter = Lists.filter;
         let send = {
             black_list: filter['black_list'].list,
@@ -342,7 +342,7 @@ function get_words(){
         };
         let data = JSON.stringify(send);
 
-         $.ajax({
+          $.ajax({
              url: url_api,
              type: 'POST',
                headers: {
