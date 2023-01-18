@@ -55,7 +55,5 @@ cd ..
 pip install -r requirements.txt
 
 Запустить сервер:
-
 cd app
-
 uvicorn main:app --reload
