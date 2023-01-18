@@ -43,11 +43,15 @@ Python, FastAPI, Redis, Docker, Docker-Compose, HTML, CSS, JQuery, JavaScript, A
 Для запуска без контейнера после п.3 выполнить следующее.
 
 Запустить Redis в контейнере:
+
 cd word_choice_server/redis
+
 docker-compose up -d
+
 cd ..
 
 Установить зависимости:
+
 pip install -r requirements.txt
 
 Запустить сервер:
