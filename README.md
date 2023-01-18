@@ -40,13 +40,22 @@ Python, FastAPI, Redis, Docker, Docker-Compose, HTML, CSS, JQuery, JavaScript, A
 6. sudo docker-compose up -d
 7. В браузере открыть: 127.0.0.1/5letters/ или <IP адрес сервера (сайт)>/5letters/
 
-Для запуска без контейнера после п.3 выполнить следующее
+Для запуска без контейнера после п.3 выполнить следующее.
 
 Запустить Redis в контейнере:
 
 cd word_choice_server/redis
+
 docker-compose up -d
+
 cd ..
 
 Установить зависимости:
 
+pip install -r requirements.txt
+
+Запустить сервер:
+
+cd app
+
+uvicorn main:app --reload
